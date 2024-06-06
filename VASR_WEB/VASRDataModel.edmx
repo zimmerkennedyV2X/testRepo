@@ -1,0 +1,1567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCLVBWeeklyInspections">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WeeklyInspectionDate" Type="date" />
+          <Property Name="WeeklyInspector" Type="nvarchar" MaxLength="50" />
+          <Property Name="WeeklyInspectionSheet" Type="varbinary(max)" />
+          <Property Name="VehicleID" Type="int" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblDailyInspection">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FuelLevelPass" Type="bit" />
+          <Property Name="MileagePass" Type="bit" />
+          <Property Name="ConditionPass" Type="bit" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="DispatchID" Type="int" />
+          <Property Name="InspectionDone" Type="bit" />
+          <Property Name="InspectionDateCompleted" Type="datetime" />
+          <Property Name="CleanPass" Type="bit" />
+          <Property Name="DispatchInspector" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExteriorDamage" Type="bit" />
+          <Property Name="ExteriorClean" Type="bit" />
+          <Property Name="InteriorClean" Type="bit" />
+          <Property Name="WindowDamage" Type="bit" />
+          <Property Name="Lights" Type="bit" />
+          <Property Name="FluidLeaks" Type="bit" />
+          <Property Name="TireInflation" Type="bit" />
+          <Property Name="ExteriorDamageComment" Type="nvarchar(max)" />
+          <Property Name="ExteriorCleanComment" Type="nvarchar(max)" />
+          <Property Name="InteriorCleanComment" Type="nvarchar(max)" />
+          <Property Name="WindowDamageComment" Type="nvarchar(max)" />
+          <Property Name="LightsComment" Type="nvarchar(max)" />
+          <Property Name="FluidLeaksComment" Type="nvarchar(max)" />
+          <Property Name="TireInflationComment" Type="nvarchar(max)" />
+          <Property Name="IsMVA" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblDailyInspectionUploads">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DailyInspectionID" Type="int" Nullable="false" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Data" Type="varbinary(max)" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblDeptManagerSections">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Section" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDispatchLogs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OperatorID" Type="int" Nullable="false" />
+          <Property Name="VehicleID" Type="int" Nullable="false" />
+          <Property Name="CheckoutTime" Type="datetime" />
+          <Property Name="StartMileage" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartFuelLevel" Type="nvarchar" MaxLength="30" />
+          <Property Name="ReturnTime" Type="datetime" />
+          <Property Name="Purpose" Type="nvarchar" MaxLength="30" />
+          <Property Name="EndMileage" Type="nvarchar" MaxLength="50" />
+          <Property Name="EndFuelLevel" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tblUsageRecords">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrentMileage" Type="nchar" MaxLength="30" />
+          <Property Name="TankLevel" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleID" Type="int" Nullable="false" />
+          <Property Name="LogTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblVehicleAccidents">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateOfIncident" Type="date" />
+          <Property Name="TimeOfIncident" Type="nchar" MaxLength="10" />
+          <Property Name="OperatorID" Type="int" />
+          <Property Name="OperatorType" Type="nchar" MaxLength="10" />
+          <Property Name="LocationOfIncident" Type="nchar" MaxLength="10" />
+          <Property Name="ExactLocationOfIncident" Type="nvarchar" MaxLength="50" />
+          <Property Name="IncidentStatement" Type="nvarchar(max)" />
+          <Property Name="DispatchID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblVehicleCode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleCode" Type="nchar" MaxLength="10" />
+          <Property Name="CodeDescription" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblVehicleFleets">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlateNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar(max)" />
+          <Property Name="DueMileage" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegExpiry" Type="date" />
+          <Property Name="CurrentMileage" Type="nvarchar" MaxLength="50" />
+          <Property Name="CurrentFuelLevel" Type="nvarchar" MaxLength="30" />
+          <Property Name="VehicleStatus" Type="bit" />
+          <Property Name="VehicleCode" Type="int" />
+          <Property Name="DesignatedOperator" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="30" />
+          <Property Name="VehicleLocation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Section" Type="nchar" MaxLength="10" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="PermIssued" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblVehicleOperators">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OperatorNum" Type="nchar" MaxLength="10" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LicenseIssueDate" Type="datetime" />
+          <Property Name="LicenseExpiryDate" Type="datetime" />
+          <Property Name="Section" Type="nchar" MaxLength="10" />
+          <Property Name="JobTitle" Type="nvarchar(max)" />
+          <Property Name="Location" Type="nchar" MaxLength="30" />
+          <Property Name="OperatorStatus" Type="bit" />
+          <Property Name="OperatorLicenseCode" Type="int" />
+          <Property Name="OperatorQualifications" Type="nvarchar(max)" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblVehiclePhotos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehiclePictures" Type="varbinary(max)" />
+          <Property Name="VehicleID" Type="int" />
+          <Property Name="PhotoFileName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblWeeklyDispatchLogs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="PreviousWeekMileage" Type="nvarchar" MaxLength="50" />
+          <Property Name="CurrentWeekMileage" Type="nvarchar" MaxLength="50" />
+          <Property Name="PreviousWeekFuelLevel" Type="nvarchar" MaxLength="30" />
+          <Property Name="CurrentWeekFuelLevel" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tblWeeklyInspections">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TiresCondition" Type="bit" />
+          <Property Name="TirePressure" Type="bit" />
+          <Property Name="TireSpare" Type="bit" />
+          <Property Name="HeadLights" Type="bit" />
+          <Property Name="LightsTail" Type="bit" />
+          <Property Name="LightsBrake" Type="bit" />
+          <Property Name="LightsTurnSignal" Type="bit" />
+          <Property Name="LightsBackup" Type="bit" />
+          <Property Name="LightsEmergencyFlasher" Type="bit" />
+          <Property Name="LightLicensePlate" Type="bit" />
+          <Property Name="LightFog" Type="bit" />
+          <Property Name="WindowShield" Type="bit" />
+          <Property Name="WindowRear" Type="bit" />
+          <Property Name="WindowDoor" Type="bit" />
+          <Property Name="WindowControl" Type="bit" />
+          <Property Name="WindowWipers" Type="bit" />
+          <Property Name="Mirrors" Type="bit" />
+          <Property Name="Brakes" Type="bit" />
+          <Property Name="EmergencyBrake" Type="bit" />
+          <Property Name="InteriorHorn" Type="bit" />
+          <Property Name="EmergencyEquipment" Type="bit" />
+          <Property Name="ACandHeater" Type="bit" Nullable="false" />
+          <Property Name="Seatbelts" Type="bit" />
+          <Property Name="PlateandLicense" Type="bit" />
+          <Property Name="InstallationAccess" Type="bit" />
+          <Property Name="Registration" Type="bit" />
+          <Property Name="EmergencyContact" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'VASRDatabase-AZ.dbo.viewAccidentReport' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="viewAccidentReport">
+          <Property Name="DateOfIncident" Type="date" />
+          <Property Name="TimeOfIncident" Type="nchar" MaxLength="10" />
+          <Property Name="OperatorType" Type="nchar" MaxLength="10" />
+          <Property Name="LocationOfIncident" Type="nchar" MaxLength="10" />
+          <Property Name="ExactLocationOfIncident" Type="nvarchar" MaxLength="50" />
+          <Property Name="IncidentStatement" Type="nvarchar(max)" />
+          <Property Name="DispatchID" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'VASRDatabase-AZ.dbo.viewCurrentlyDispatched' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="viewCurrentlyDispatched">
+          <Property Name="AdminNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlateNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar(max)" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nchar" MaxLength="30" />
+          <Property Name="StartDateAndTime" Type="datetime" />
+          <Property Name="DaysChecked" Type="int" />
+          <Property Name="Section" Type="nchar" MaxLength="10" />
+          <Property Name="PermIssued" Type="bit" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'VASRDatabase-AZ.dbo.viewDispatchProfile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewDispatchProfile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="AdminNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlateNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar(max)" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nchar" MaxLength="30" />
+          <Property Name="StartDate" Type="varchar" MaxLength="11" />
+          <Property Name="EndDate" Type="varchar" MaxLength="11" />
+          <Property Name="StartTime" Type="varchar" MaxLength="11" />
+          <Property Name="EndTime" Type="varchar" MaxLength="11" />
+          <Property Name="StartMileage" Type="nvarchar" MaxLength="50" />
+          <Property Name="EndMileage" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="EndFuelLevel" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'VASRDatabase-AZ.dbo.viewInspections' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewInspections">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="AdminNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlateNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartFuelLevel" Type="nvarchar" MaxLength="30" />
+          <Property Name="ReturnTime" Type="datetime" />
+          <Property Name="FuelLevelPass" Type="bit" />
+          <Property Name="MileagePass" Type="bit" />
+          <Property Name="ConditionPass" Type="bit" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="InspectionDateCompleted" Type="datetime" />
+          <Property Name="EndMileage" Type="nvarchar" MaxLength="50" />
+          <Property Name="EndFuelLevel" Type="nvarchar" MaxLength="30" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Model" Type="nvarchar(max)" />
+          <Property Name="DispatchInspector" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExteriorDamage" Type="bit" />
+          <Property Name="ExteriorClean" Type="bit" />
+          <Property Name="InteriorClean" Type="bit" />
+          <Property Name="WindowDamage" Type="bit" />
+          <Property Name="Lights" Type="bit" />
+          <Property Name="FluidLeaks" Type="bit" />
+          <Property Name="TireInflation" Type="bit" />
+          <Property Name="ExteriorDamageComment" Type="nvarchar(max)" />
+          <Property Name="ExteriorCleanComment" Type="nvarchar(max)" />
+          <Property Name="InteriorCleanComment" Type="nvarchar(max)" />
+          <Property Name="WindowDamageComment" Type="nvarchar(max)" />
+          <Property Name="LightsComment" Type="nvarchar(max)" />
+          <Property Name="FluidLeaksComment" Type="nvarchar(max)" />
+          <Property Name="TireInflationComment" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'VASRDatabase-AZ.dbo.viewOperatorVehicleUsage' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewOperatorVehicleUsage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CheckoutTime" Type="datetime" />
+          <Property Name="EndMileage" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartMileage" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReturnTime" Type="datetime" />
+          <Property Name="AdminNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar(max)" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="PlateNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'VASRDatabase-AZ.dbo.viewVehicleInspectionRecords' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewVehicleInspectionRecords">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="VehicleID" />
+          </Key>
+          <Property Name="AdminNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlateNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar(max)" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartDate" Type="varchar" MaxLength="11" />
+          <Property Name="EndDate" Type="varchar" MaxLength="11" />
+          <Property Name="StartTime" Type="varchar" MaxLength="11" />
+          <Property Name="EndTime" Type="varchar" MaxLength="11" />
+          <Property Name="StartMileage" Type="nvarchar" MaxLength="50" />
+          <Property Name="EndMileage" Type="nvarchar" MaxLength="50" />
+          <Property Name="InspectionDateCompleted" Type="datetime" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ConditionPass" Type="bit" />
+          <Property Name="VehicleID" Type="int" Nullable="false" />
+          <Property Name="DispatchInspector" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsMVA" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'VASRDatabase-AZ.dbo.viewVehicleUsageRecords' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewVehicleUsageRecords">
+          <Key>
+            <PropertyRef Name="VehicleID" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="AdminNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlateNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar(max)" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nchar" MaxLength="30" />
+          <Property Name="StartDateAndTime" Type="datetime" />
+          <Property Name="EndMileage" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Inspector" Type="nvarchar" MaxLength="50" />
+          <Property Name="InspectDate" Type="datetime" />
+          <Property Name="ConditionPass" Type="bit" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spExportToExcel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spExportToExcelOperator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spFilterDailyDispatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DateFilter" Type="date" Mode="In" />
+        </Function>
+        <Function Name="spFilterDailyInspection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DateFilter" Type="date" Mode="In" />
+        </Function>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCLVBWeeklyInspections" EntityType="Self.tblCLVBWeeklyInspections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDailyInspection" EntityType="Self.tblDailyInspection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDailyInspectionUploads" EntityType="Self.tblDailyInspectionUploads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDeptManagerSections" EntityType="Self.tblDeptManagerSections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDispatchLogs" EntityType="Self.tblDispatchLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsageRecords" EntityType="Self.tblUsageRecords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVehicleAccidents" EntityType="Self.tblVehicleAccidents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVehicleCode" EntityType="Self.tblVehicleCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVehicleFleets" EntityType="Self.tblVehicleFleets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVehicleOperators" EntityType="Self.tblVehicleOperators" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVehiclePhotos" EntityType="Self.tblVehiclePhotos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblWeeklyDispatchLogs" EntityType="Self.tblWeeklyDispatchLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblWeeklyInspections" EntityType="Self.tblWeeklyInspections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="viewDispatchProfile" EntityType="Self.viewDispatchProfile" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewDispatchProfile].[AdminNumber] AS [AdminNumber], 
+    [viewDispatchProfile].[PlateNumber] AS [PlateNumber], 
+    [viewDispatchProfile].[Model] AS [Model], 
+    [viewDispatchProfile].[FullName] AS [FullName], 
+    [viewDispatchProfile].[Location] AS [Location], 
+    [viewDispatchProfile].[StartDate] AS [StartDate], 
+    [viewDispatchProfile].[EndDate] AS [EndDate], 
+    [viewDispatchProfile].[StartTime] AS [StartTime], 
+    [viewDispatchProfile].[EndTime] AS [EndTime], 
+    [viewDispatchProfile].[StartMileage] AS [StartMileage], 
+    [viewDispatchProfile].[EndMileage] AS [EndMileage], 
+    [viewDispatchProfile].[ID] AS [ID], 
+    [viewDispatchProfile].[EndFuelLevel] AS [EndFuelLevel]
+    FROM [dbo].[viewDispatchProfile] AS [viewDispatchProfile]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="viewInspections" EntityType="Self.viewInspections" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewInspections].[AdminNumber] AS [AdminNumber], 
+    [viewInspections].[PlateNumber] AS [PlateNumber], 
+    [viewInspections].[FullName] AS [FullName], 
+    [viewInspections].[StartFuelLevel] AS [StartFuelLevel], 
+    [viewInspections].[ReturnTime] AS [ReturnTime], 
+    [viewInspections].[FuelLevelPass] AS [FuelLevelPass], 
+    [viewInspections].[MileagePass] AS [MileagePass], 
+    [viewInspections].[ConditionPass] AS [ConditionPass], 
+    [viewInspections].[Comments] AS [Comments], 
+    [viewInspections].[InspectionDateCompleted] AS [InspectionDateCompleted], 
+    [viewInspections].[EndMileage] AS [EndMileage], 
+    [viewInspections].[EndFuelLevel] AS [EndFuelLevel], 
+    [viewInspections].[ID] AS [ID], 
+    [viewInspections].[Model] AS [Model], 
+    [viewInspections].[DispatchInspector] AS [DispatchInspector], 
+    [viewInspections].[ExteriorDamage] AS [ExteriorDamage], 
+    [viewInspections].[ExteriorClean] AS [ExteriorClean], 
+    [viewInspections].[InteriorClean] AS [InteriorClean], 
+    [viewInspections].[WindowDamage] AS [WindowDamage], 
+    [viewInspections].[Lights] AS [Lights], 
+    [viewInspections].[FluidLeaks] AS [FluidLeaks], 
+    [viewInspections].[TireInflation] AS [TireInflation], 
+    [viewInspections].[ExteriorDamageComment] AS [ExteriorDamageComment], 
+    [viewInspections].[ExteriorCleanComment] AS [ExteriorCleanComment], 
+    [viewInspections].[InteriorCleanComment] AS [InteriorCleanComment], 
+    [viewInspections].[WindowDamageComment] AS [WindowDamageComment], 
+    [viewInspections].[LightsComment] AS [LightsComment], 
+    [viewInspections].[FluidLeaksComment] AS [FluidLeaksComment], 
+    [viewInspections].[TireInflationComment] AS [TireInflationComment]
+    FROM [dbo].[viewInspections] AS [viewInspections]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="viewOperatorVehicleUsage" EntityType="Self.viewOperatorVehicleUsage" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewOperatorVehicleUsage].[FullName] AS [FullName], 
+    [viewOperatorVehicleUsage].[CheckoutTime] AS [CheckoutTime], 
+    [viewOperatorVehicleUsage].[EndMileage] AS [EndMileage], 
+    [viewOperatorVehicleUsage].[StartMileage] AS [StartMileage], 
+    [viewOperatorVehicleUsage].[ReturnTime] AS [ReturnTime], 
+    [viewOperatorVehicleUsage].[AdminNumber] AS [AdminNumber], 
+    [viewOperatorVehicleUsage].[Model] AS [Model], 
+    [viewOperatorVehicleUsage].[ID] AS [ID], 
+    [viewOperatorVehicleUsage].[PlateNumber] AS [PlateNumber]
+    FROM [dbo].[viewOperatorVehicleUsage] AS [viewOperatorVehicleUsage]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="viewVehicleInspectionRecords" EntityType="Self.viewVehicleInspectionRecords" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewVehicleInspectionRecords].[AdminNumber] AS [AdminNumber], 
+    [viewVehicleInspectionRecords].[PlateNumber] AS [PlateNumber], 
+    [viewVehicleInspectionRecords].[Model] AS [Model], 
+    [viewVehicleInspectionRecords].[FullName] AS [FullName], 
+    [viewVehicleInspectionRecords].[StartDate] AS [StartDate], 
+    [viewVehicleInspectionRecords].[EndDate] AS [EndDate], 
+    [viewVehicleInspectionRecords].[StartTime] AS [StartTime], 
+    [viewVehicleInspectionRecords].[EndTime] AS [EndTime], 
+    [viewVehicleInspectionRecords].[StartMileage] AS [StartMileage], 
+    [viewVehicleInspectionRecords].[EndMileage] AS [EndMileage], 
+    [viewVehicleInspectionRecords].[InspectionDateCompleted] AS [InspectionDateCompleted], 
+    [viewVehicleInspectionRecords].[ID] AS [ID], 
+    [viewVehicleInspectionRecords].[ConditionPass] AS [ConditionPass], 
+    [viewVehicleInspectionRecords].[VehicleID] AS [VehicleID], 
+    [viewVehicleInspectionRecords].[DispatchInspector] AS [DispatchInspector], 
+    [viewVehicleInspectionRecords].[IsMVA] AS [IsMVA]
+    FROM [dbo].[viewVehicleInspectionRecords] AS [viewVehicleInspectionRecords]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="viewVehicleUsageRecords" EntityType="Self.viewVehicleUsageRecords" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewVehicleUsageRecords].[AdminNumber] AS [AdminNumber], 
+    [viewVehicleUsageRecords].[PlateNumber] AS [PlateNumber], 
+    [viewVehicleUsageRecords].[Model] AS [Model], 
+    [viewVehicleUsageRecords].[FullName] AS [FullName], 
+    [viewVehicleUsageRecords].[Location] AS [Location], 
+    [viewVehicleUsageRecords].[StartDateAndTime] AS [StartDateAndTime], 
+    [viewVehicleUsageRecords].[EndMileage] AS [EndMileage], 
+    [viewVehicleUsageRecords].[VehicleID] AS [VehicleID], 
+    [viewVehicleUsageRecords].[ID] AS [ID], 
+    [viewVehicleUsageRecords].[Inspector] AS [Inspector], 
+    [viewVehicleUsageRecords].[InspectDate] AS [InspectDate], 
+    [viewVehicleUsageRecords].[ConditionPass] AS [ConditionPass]
+    FROM [dbo].[viewVehicleUsageRecords] AS [viewVehicleUsageRecords]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="tblCLVBWeeklyInspection">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WeeklyInspectionDate" Type="DateTime" Precision="0" />
+          <Property Name="WeeklyInspector" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WeeklyInspectionSheet" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="VehicleID" Type="Int32" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblDailyInspection">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FuelLevelPass" Type="Boolean" />
+          <Property Name="MileagePass" Type="Boolean" />
+          <Property Name="ConditionPass" Type="Boolean" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DispatchID" Type="Int32" />
+          <Property Name="InspectionDone" Type="Boolean" />
+          <Property Name="InspectionDateCompleted" Type="DateTime" Precision="3" />
+          <Property Name="CleanPass" Type="Boolean" />
+          <Property Name="DispatchInspector" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExteriorDamage" Type="Boolean" />
+          <Property Name="ExteriorClean" Type="Boolean" />
+          <Property Name="InteriorClean" Type="Boolean" />
+          <Property Name="WindowDamage" Type="Boolean" />
+          <Property Name="Lights" Type="Boolean" />
+          <Property Name="FluidLeaks" Type="Boolean" />
+          <Property Name="TireInflation" Type="Boolean" />
+          <Property Name="ExteriorDamageComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExteriorCleanComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InteriorCleanComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WindowDamageComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LightsComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FluidLeaksComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TireInflationComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsMVA" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblDailyInspectionUpload">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DailyInspectionID" Type="Int32" Nullable="false" />
+          <Property Name="FileType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblDeptManagerSection">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Section" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDispatchLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OperatorID" Type="Int32" Nullable="false" />
+          <Property Name="VehicleID" Type="Int32" Nullable="false" />
+          <Property Name="CheckoutTime" Type="DateTime" Precision="3" />
+          <Property Name="StartMileage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartFuelLevel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ReturnTime" Type="DateTime" Precision="3" />
+          <Property Name="Purpose" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="EndMileage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EndFuelLevel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblUsageRecord">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrentMileage" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="TankLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleID" Type="Int32" Nullable="false" />
+          <Property Name="LogTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblVehicleAccident">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateOfIncident" Type="DateTime" Precision="0" />
+          <Property Name="TimeOfIncident" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="OperatorID" Type="Int32" />
+          <Property Name="OperatorType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="LocationOfIncident" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ExactLocationOfIncident" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IncidentStatement" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DispatchID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblVehicleCode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CodeDescription" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblVehicleFleet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlateNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DueMileage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegExpiry" Type="DateTime" Precision="0" />
+          <Property Name="CurrentMileage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentFuelLevel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleStatus" Type="Boolean" />
+          <Property Name="VehicleCode" Type="Int32" />
+          <Property Name="DesignatedOperator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Section" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PermIssued" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblVehicleOperator">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OperatorNum" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LicenseIssueDate" Type="DateTime" Precision="3" />
+          <Property Name="LicenseExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="Section" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="JobTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="OperatorStatus" Type="Boolean" />
+          <Property Name="OperatorLicenseCode" Type="Int32" />
+          <Property Name="OperatorQualifications" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblVehiclePhoto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehiclePictures" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="VehicleID" Type="Int32" />
+          <Property Name="PhotoFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblWeeklyDispatchLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="PreviousWeekMileage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentWeekMileage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PreviousWeekFuelLevel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentWeekFuelLevel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblWeeklyInspection">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TiresCondition" Type="Boolean" />
+          <Property Name="TirePressure" Type="Boolean" />
+          <Property Name="TireSpare" Type="Boolean" />
+          <Property Name="HeadLights" Type="Boolean" />
+          <Property Name="LightsTail" Type="Boolean" />
+          <Property Name="LightsBrake" Type="Boolean" />
+          <Property Name="LightsTurnSignal" Type="Boolean" />
+          <Property Name="LightsBackup" Type="Boolean" />
+          <Property Name="LightsEmergencyFlasher" Type="Boolean" />
+          <Property Name="LightLicensePlate" Type="Boolean" />
+          <Property Name="LightFog" Type="Boolean" />
+          <Property Name="WindowShield" Type="Boolean" />
+          <Property Name="WindowRear" Type="Boolean" />
+          <Property Name="WindowDoor" Type="Boolean" />
+          <Property Name="WindowControl" Type="Boolean" />
+          <Property Name="WindowWipers" Type="Boolean" />
+          <Property Name="Mirrors" Type="Boolean" />
+          <Property Name="Brakes" Type="Boolean" />
+          <Property Name="EmergencyBrake" Type="Boolean" />
+          <Property Name="InteriorHorn" Type="Boolean" />
+          <Property Name="EmergencyEquipment" Type="Boolean" />
+          <Property Name="ACandHeater" Type="Boolean" Nullable="false" />
+          <Property Name="Seatbelts" Type="Boolean" />
+          <Property Name="PlateandLicense" Type="Boolean" />
+          <Property Name="InstallationAccess" Type="Boolean" />
+          <Property Name="Registration" Type="Boolean" />
+          <Property Name="EmergencyContact" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="viewDispatchProfile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="AdminNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlateNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="StartDate" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="EndDate" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="StartTime" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="EndTime" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="StartMileage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EndMileage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="EndFuelLevel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="viewInspection">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="AdminNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlateNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartFuelLevel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ReturnTime" Type="DateTime" Precision="3" />
+          <Property Name="FuelLevelPass" Type="Boolean" />
+          <Property Name="MileagePass" Type="Boolean" />
+          <Property Name="ConditionPass" Type="Boolean" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InspectionDateCompleted" Type="DateTime" Precision="3" />
+          <Property Name="EndMileage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EndFuelLevel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DispatchInspector" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExteriorDamage" Type="Boolean" />
+          <Property Name="ExteriorClean" Type="Boolean" />
+          <Property Name="InteriorClean" Type="Boolean" />
+          <Property Name="WindowDamage" Type="Boolean" />
+          <Property Name="Lights" Type="Boolean" />
+          <Property Name="FluidLeaks" Type="Boolean" />
+          <Property Name="TireInflation" Type="Boolean" />
+          <Property Name="ExteriorDamageComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExteriorCleanComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InteriorCleanComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WindowDamageComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LightsComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FluidLeaksComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TireInflationComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="viewOperatorVehicleUsage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CheckoutTime" Type="DateTime" Precision="3" />
+          <Property Name="EndMileage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartMileage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReturnTime" Type="DateTime" Precision="3" />
+          <Property Name="AdminNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="PlateNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="viewVehicleInspectionRecord">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="VehicleID" />
+          </Key>
+          <Property Name="AdminNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlateNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="EndDate" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="StartTime" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="EndTime" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="StartMileage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EndMileage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InspectionDateCompleted" Type="DateTime" Precision="3" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ConditionPass" Type="Boolean" />
+          <Property Name="VehicleID" Type="Int32" Nullable="false" />
+          <Property Name="DispatchInspector" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsMVA" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="viewVehicleUsageRecord">
+          <Key>
+            <PropertyRef Name="VehicleID" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="AdminNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlateNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="StartDateAndTime" Type="DateTime" Precision="3" />
+          <Property Name="EndMileage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Inspector" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InspectDate" Type="DateTime" Precision="3" />
+          <Property Name="ConditionPass" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="VASRDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="tblCLVBWeeklyInspections" EntityType="Self.tblCLVBWeeklyInspection" />
+          <EntitySet Name="tblDailyInspections" EntityType="Self.tblDailyInspection" />
+          <EntitySet Name="tblDailyInspectionUploads" EntityType="Self.tblDailyInspectionUpload" />
+          <EntitySet Name="tblDeptManagerSections" EntityType="Self.tblDeptManagerSection" />
+          <EntitySet Name="tblDispatchLogs" EntityType="Self.tblDispatchLog" />
+          <EntitySet Name="tblUsageRecords" EntityType="Self.tblUsageRecord" />
+          <EntitySet Name="tblVehicleAccidents" EntityType="Self.tblVehicleAccident" />
+          <EntitySet Name="tblVehicleCodes" EntityType="Self.tblVehicleCode" />
+          <EntitySet Name="tblVehicleFleets" EntityType="Self.tblVehicleFleet" />
+          <EntitySet Name="tblVehicleOperators" EntityType="Self.tblVehicleOperator" />
+          <EntitySet Name="tblVehiclePhotos" EntityType="Self.tblVehiclePhoto" />
+          <EntitySet Name="tblWeeklyDispatchLogs" EntityType="Self.tblWeeklyDispatchLog" />
+          <EntitySet Name="tblWeeklyInspections" EntityType="Self.tblWeeklyInspection" />
+          <EntitySet Name="viewDispatchProfiles" EntityType="Self.viewDispatchProfile" />
+          <EntitySet Name="viewInspections" EntityType="Self.viewInspection" />
+          <EntitySet Name="viewOperatorVehicleUsages" EntityType="Self.viewOperatorVehicleUsage" />
+          <EntitySet Name="viewVehicleInspectionRecords" EntityType="Self.viewVehicleInspectionRecord" />
+          <EntitySet Name="viewVehicleUsageRecords" EntityType="Self.viewVehicleUsageRecord" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <FunctionImport Name="spExportToExcel" ReturnType="Collection(Model.spExportToExcel_Result)" />
+          <FunctionImport Name="spExportToExcelOperator" ReturnType="Collection(Model.spExportToExcelOperator_Result)" />
+          <FunctionImport Name="spFilterDailyDispatch" ReturnType="Collection(Model.spFilterDailyDispatch_Result)">
+            <Parameter Name="DateFilter" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spFilterDailyInspection" ReturnType="Collection(Model.spFilterDailyInspection_Result)">
+            <Parameter Name="DateFilter" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="spExportToExcel_Result">
+          <Property Type="String" Name="Admin_Number" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Plate_Number" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Make_Model" Nullable="true" />
+          <Property Type="String" Name="Section" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Operator" Nullable="true" />
+          <Property Type="String" Name="Service_Due_Mileage" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Registration" Nullable="true" />
+          <Property Type="String" Name="Current_Mileage" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spExportToExcelOperator_Result">
+          <Property Type="String" Name="IMDNumber" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Section" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="JobTitle" Nullable="true" />
+          <Property Type="String" Name="Work_Location" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="spFilterDailyDispatch_Result">
+          <Property Type="String" Name="AdminNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PlateNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Model" Nullable="true" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="StartDate" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="EndDate" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="StartTime" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="EndTime" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="StartMileage" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EndMileage" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spFilterDailyInspection_Result">
+          <Property Type="String" Name="AdminNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PlateNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Model" Nullable="true" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="StartDate" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="EndDate" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="StartTime" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="EndTime" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="StartMileage" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EndMileage" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="InspectionDateCompleted" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Boolean" Name="ConditionPass" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="VASRDatabaseEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="Model.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="Model.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="Model.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="Model.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Model.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCLVBWeeklyInspections">
+            <EntityTypeMapping TypeName="Model.tblCLVBWeeklyInspection">
+              <MappingFragment StoreEntitySet="tblCLVBWeeklyInspections">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="WeeklyInspectionDate" ColumnName="WeeklyInspectionDate" />
+                <ScalarProperty Name="WeeklyInspector" ColumnName="WeeklyInspector" />
+                <ScalarProperty Name="WeeklyInspectionSheet" ColumnName="WeeklyInspectionSheet" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDailyInspections">
+            <EntityTypeMapping TypeName="Model.tblDailyInspection">
+              <MappingFragment StoreEntitySet="tblDailyInspection">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FuelLevelPass" ColumnName="FuelLevelPass" />
+                <ScalarProperty Name="MileagePass" ColumnName="MileagePass" />
+                <ScalarProperty Name="ConditionPass" ColumnName="ConditionPass" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DispatchID" ColumnName="DispatchID" />
+                <ScalarProperty Name="InspectionDone" ColumnName="InspectionDone" />
+                <ScalarProperty Name="InspectionDateCompleted" ColumnName="InspectionDateCompleted" />
+                <ScalarProperty Name="CleanPass" ColumnName="CleanPass" />
+                <ScalarProperty Name="DispatchInspector" ColumnName="DispatchInspector" />
+                <ScalarProperty Name="ExteriorDamage" ColumnName="ExteriorDamage" />
+                <ScalarProperty Name="ExteriorClean" ColumnName="ExteriorClean" />
+                <ScalarProperty Name="InteriorClean" ColumnName="InteriorClean" />
+                <ScalarProperty Name="WindowDamage" ColumnName="WindowDamage" />
+                <ScalarProperty Name="Lights" ColumnName="Lights" />
+                <ScalarProperty Name="FluidLeaks" ColumnName="FluidLeaks" />
+                <ScalarProperty Name="TireInflation" ColumnName="TireInflation" />
+                <ScalarProperty Name="ExteriorDamageComment" ColumnName="ExteriorDamageComment" />
+                <ScalarProperty Name="ExteriorCleanComment" ColumnName="ExteriorCleanComment" />
+                <ScalarProperty Name="InteriorCleanComment" ColumnName="InteriorCleanComment" />
+                <ScalarProperty Name="WindowDamageComment" ColumnName="WindowDamageComment" />
+                <ScalarProperty Name="LightsComment" ColumnName="LightsComment" />
+                <ScalarProperty Name="FluidLeaksComment" ColumnName="FluidLeaksComment" />
+                <ScalarProperty Name="TireInflationComment" ColumnName="TireInflationComment" />
+                <ScalarProperty Name="IsMVA" ColumnName="IsMVA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDailyInspectionUploads">
+            <EntityTypeMapping TypeName="Model.tblDailyInspectionUpload">
+              <MappingFragment StoreEntitySet="tblDailyInspectionUploads">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DailyInspectionID" ColumnName="DailyInspectionID" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDeptManagerSections">
+            <EntityTypeMapping TypeName="Model.tblDeptManagerSection">
+              <MappingFragment StoreEntitySet="tblDeptManagerSections">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDispatchLogs">
+            <EntityTypeMapping TypeName="Model.tblDispatchLog">
+              <MappingFragment StoreEntitySet="tblDispatchLogs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="CheckoutTime" ColumnName="CheckoutTime" />
+                <ScalarProperty Name="StartMileage" ColumnName="StartMileage" />
+                <ScalarProperty Name="StartFuelLevel" ColumnName="StartFuelLevel" />
+                <ScalarProperty Name="ReturnTime" ColumnName="ReturnTime" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="EndMileage" ColumnName="EndMileage" />
+                <ScalarProperty Name="EndFuelLevel" ColumnName="EndFuelLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsageRecords">
+            <EntityTypeMapping TypeName="Model.tblUsageRecord">
+              <MappingFragment StoreEntitySet="tblUsageRecords">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CurrentMileage" ColumnName="CurrentMileage" />
+                <ScalarProperty Name="TankLevel" ColumnName="TankLevel" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVehicleAccidents">
+            <EntityTypeMapping TypeName="Model.tblVehicleAccident">
+              <MappingFragment StoreEntitySet="tblVehicleAccidents">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateOfIncident" ColumnName="DateOfIncident" />
+                <ScalarProperty Name="TimeOfIncident" ColumnName="TimeOfIncident" />
+                <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+                <ScalarProperty Name="OperatorType" ColumnName="OperatorType" />
+                <ScalarProperty Name="LocationOfIncident" ColumnName="LocationOfIncident" />
+                <ScalarProperty Name="ExactLocationOfIncident" ColumnName="ExactLocationOfIncident" />
+                <ScalarProperty Name="IncidentStatement" ColumnName="IncidentStatement" />
+                <ScalarProperty Name="DispatchID" ColumnName="DispatchID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVehicleCodes">
+            <EntityTypeMapping TypeName="Model.tblVehicleCode">
+              <MappingFragment StoreEntitySet="tblVehicleCode">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleCode" ColumnName="VehicleCode" />
+                <ScalarProperty Name="CodeDescription" ColumnName="CodeDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVehicleFleets">
+            <EntityTypeMapping TypeName="Model.tblVehicleFleet">
+              <MappingFragment StoreEntitySet="tblVehicleFleets">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AdminNumber" ColumnName="AdminNumber" />
+                <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="DueMileage" ColumnName="DueMileage" />
+                <ScalarProperty Name="RegExpiry" ColumnName="RegExpiry" />
+                <ScalarProperty Name="CurrentMileage" ColumnName="CurrentMileage" />
+                <ScalarProperty Name="CurrentFuelLevel" ColumnName="CurrentFuelLevel" />
+                <ScalarProperty Name="VehicleStatus" ColumnName="VehicleStatus" />
+                <ScalarProperty Name="VehicleCode" ColumnName="VehicleCode" />
+                <ScalarProperty Name="DesignatedOperator" ColumnName="DesignatedOperator" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="VehicleLocation" ColumnName="VehicleLocation" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="PermIssued" ColumnName="PermIssued" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVehicleOperators">
+            <EntityTypeMapping TypeName="Model.tblVehicleOperator">
+              <MappingFragment StoreEntitySet="tblVehicleOperators">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OperatorNum" ColumnName="OperatorNum" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="LicenseIssueDate" ColumnName="LicenseIssueDate" />
+                <ScalarProperty Name="LicenseExpiryDate" ColumnName="LicenseExpiryDate" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="OperatorStatus" ColumnName="OperatorStatus" />
+                <ScalarProperty Name="OperatorLicenseCode" ColumnName="OperatorLicenseCode" />
+                <ScalarProperty Name="OperatorQualifications" ColumnName="OperatorQualifications" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVehiclePhotos">
+            <EntityTypeMapping TypeName="Model.tblVehiclePhoto">
+              <MappingFragment StoreEntitySet="tblVehiclePhotos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehiclePictures" ColumnName="VehiclePictures" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="PhotoFileName" ColumnName="PhotoFileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblWeeklyDispatchLogs">
+            <EntityTypeMapping TypeName="Model.tblWeeklyDispatchLog">
+              <MappingFragment StoreEntitySet="tblWeeklyDispatchLogs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="PreviousWeekMileage" ColumnName="PreviousWeekMileage" />
+                <ScalarProperty Name="CurrentWeekMileage" ColumnName="CurrentWeekMileage" />
+                <ScalarProperty Name="PreviousWeekFuelLevel" ColumnName="PreviousWeekFuelLevel" />
+                <ScalarProperty Name="CurrentWeekFuelLevel" ColumnName="CurrentWeekFuelLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblWeeklyInspections">
+            <EntityTypeMapping TypeName="Model.tblWeeklyInspection">
+              <MappingFragment StoreEntitySet="tblWeeklyInspections">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TiresCondition" ColumnName="TiresCondition" />
+                <ScalarProperty Name="TirePressure" ColumnName="TirePressure" />
+                <ScalarProperty Name="TireSpare" ColumnName="TireSpare" />
+                <ScalarProperty Name="HeadLights" ColumnName="HeadLights" />
+                <ScalarProperty Name="LightsTail" ColumnName="LightsTail" />
+                <ScalarProperty Name="LightsBrake" ColumnName="LightsBrake" />
+                <ScalarProperty Name="LightsTurnSignal" ColumnName="LightsTurnSignal" />
+                <ScalarProperty Name="LightsBackup" ColumnName="LightsBackup" />
+                <ScalarProperty Name="LightsEmergencyFlasher" ColumnName="LightsEmergencyFlasher" />
+                <ScalarProperty Name="LightLicensePlate" ColumnName="LightLicensePlate" />
+                <ScalarProperty Name="LightFog" ColumnName="LightFog" />
+                <ScalarProperty Name="WindowShield" ColumnName="WindowShield" />
+                <ScalarProperty Name="WindowRear" ColumnName="WindowRear" />
+                <ScalarProperty Name="WindowDoor" ColumnName="WindowDoor" />
+                <ScalarProperty Name="WindowControl" ColumnName="WindowControl" />
+                <ScalarProperty Name="WindowWipers" ColumnName="WindowWipers" />
+                <ScalarProperty Name="Mirrors" ColumnName="Mirrors" />
+                <ScalarProperty Name="Brakes" ColumnName="Brakes" />
+                <ScalarProperty Name="EmergencyBrake" ColumnName="EmergencyBrake" />
+                <ScalarProperty Name="InteriorHorn" ColumnName="InteriorHorn" />
+                <ScalarProperty Name="EmergencyEquipment" ColumnName="EmergencyEquipment" />
+                <ScalarProperty Name="ACandHeater" ColumnName="ACandHeater" />
+                <ScalarProperty Name="Seatbelts" ColumnName="Seatbelts" />
+                <ScalarProperty Name="PlateandLicense" ColumnName="PlateandLicense" />
+                <ScalarProperty Name="InstallationAccess" ColumnName="InstallationAccess" />
+                <ScalarProperty Name="Registration" ColumnName="Registration" />
+                <ScalarProperty Name="EmergencyContact" ColumnName="EmergencyContact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewDispatchProfiles">
+            <EntityTypeMapping TypeName="Model.viewDispatchProfile">
+              <MappingFragment StoreEntitySet="viewDispatchProfile">
+                <ScalarProperty Name="AdminNumber" ColumnName="AdminNumber" />
+                <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartMileage" ColumnName="StartMileage" />
+                <ScalarProperty Name="EndMileage" ColumnName="EndMileage" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EndFuelLevel" ColumnName="EndFuelLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewInspections">
+            <EntityTypeMapping TypeName="Model.viewInspection">
+              <MappingFragment StoreEntitySet="viewInspections">
+                <ScalarProperty Name="AdminNumber" ColumnName="AdminNumber" />
+                <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="StartFuelLevel" ColumnName="StartFuelLevel" />
+                <ScalarProperty Name="ReturnTime" ColumnName="ReturnTime" />
+                <ScalarProperty Name="FuelLevelPass" ColumnName="FuelLevelPass" />
+                <ScalarProperty Name="MileagePass" ColumnName="MileagePass" />
+                <ScalarProperty Name="ConditionPass" ColumnName="ConditionPass" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="InspectionDateCompleted" ColumnName="InspectionDateCompleted" />
+                <ScalarProperty Name="EndMileage" ColumnName="EndMileage" />
+                <ScalarProperty Name="EndFuelLevel" ColumnName="EndFuelLevel" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="DispatchInspector" ColumnName="DispatchInspector" />
+                <ScalarProperty Name="ExteriorDamage" ColumnName="ExteriorDamage" />
+                <ScalarProperty Name="ExteriorClean" ColumnName="ExteriorClean" />
+                <ScalarProperty Name="InteriorClean" ColumnName="InteriorClean" />
+                <ScalarProperty Name="WindowDamage" ColumnName="WindowDamage" />
+                <ScalarProperty Name="Lights" ColumnName="Lights" />
+                <ScalarProperty Name="FluidLeaks" ColumnName="FluidLeaks" />
+                <ScalarProperty Name="TireInflation" ColumnName="TireInflation" />
+                <ScalarProperty Name="ExteriorDamageComment" ColumnName="ExteriorDamageComment" />
+                <ScalarProperty Name="ExteriorCleanComment" ColumnName="ExteriorCleanComment" />
+                <ScalarProperty Name="InteriorCleanComment" ColumnName="InteriorCleanComment" />
+                <ScalarProperty Name="WindowDamageComment" ColumnName="WindowDamageComment" />
+                <ScalarProperty Name="LightsComment" ColumnName="LightsComment" />
+                <ScalarProperty Name="FluidLeaksComment" ColumnName="FluidLeaksComment" />
+                <ScalarProperty Name="TireInflationComment" ColumnName="TireInflationComment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewOperatorVehicleUsages">
+            <EntityTypeMapping TypeName="Model.viewOperatorVehicleUsage">
+              <MappingFragment StoreEntitySet="viewOperatorVehicleUsage">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="CheckoutTime" ColumnName="CheckoutTime" />
+                <ScalarProperty Name="EndMileage" ColumnName="EndMileage" />
+                <ScalarProperty Name="StartMileage" ColumnName="StartMileage" />
+                <ScalarProperty Name="ReturnTime" ColumnName="ReturnTime" />
+                <ScalarProperty Name="AdminNumber" ColumnName="AdminNumber" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewVehicleInspectionRecords">
+            <EntityTypeMapping TypeName="Model.viewVehicleInspectionRecord">
+              <MappingFragment StoreEntitySet="viewVehicleInspectionRecords">
+                <ScalarProperty Name="AdminNumber" ColumnName="AdminNumber" />
+                <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartMileage" ColumnName="StartMileage" />
+                <ScalarProperty Name="EndMileage" ColumnName="EndMileage" />
+                <ScalarProperty Name="InspectionDateCompleted" ColumnName="InspectionDateCompleted" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ConditionPass" ColumnName="ConditionPass" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="DispatchInspector" ColumnName="DispatchInspector" />
+                <ScalarProperty Name="IsMVA" ColumnName="IsMVA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewVehicleUsageRecords">
+            <EntityTypeMapping TypeName="Model.viewVehicleUsageRecord">
+              <MappingFragment StoreEntitySet="viewVehicleUsageRecords">
+                <ScalarProperty Name="AdminNumber" ColumnName="AdminNumber" />
+                <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="StartDateAndTime" ColumnName="StartDateAndTime" />
+                <ScalarProperty Name="EndMileage" ColumnName="EndMileage" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Inspector" ColumnName="Inspector" />
+                <ScalarProperty Name="InspectDate" ColumnName="InspectDate" />
+                <ScalarProperty Name="ConditionPass" ColumnName="ConditionPass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="spExportToExcel" FunctionName="Model.Store.spExportToExcel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.spExportToExcel_Result">
+                <ScalarProperty Name="Admin_Number" ColumnName="Admin Number" />
+                <ScalarProperty Name="Plate_Number" ColumnName="Plate Number" />
+                <ScalarProperty Name="Make_Model" ColumnName="Make/Model" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="Service_Due_Mileage" ColumnName="Service Due Mileage" />
+                <ScalarProperty Name="Registration" ColumnName="Registration" />
+                <ScalarProperty Name="Current_Mileage" ColumnName="Current Mileage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spExportToExcelOperator" FunctionName="Model.Store.spExportToExcelOperator">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.spExportToExcelOperator_Result">
+                <ScalarProperty Name="IMDNumber" ColumnName="IMDNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Work_Location" ColumnName="Work Location" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spFilterDailyDispatch" FunctionName="Model.Store.spFilterDailyDispatch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.spFilterDailyDispatch_Result">
+                <ScalarProperty Name="AdminNumber" ColumnName="AdminNumber" />
+                <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartMileage" ColumnName="StartMileage" />
+                <ScalarProperty Name="EndMileage" ColumnName="EndMileage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spFilterDailyInspection" FunctionName="Model.Store.spFilterDailyInspection">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.spFilterDailyInspection_Result">
+                <ScalarProperty Name="AdminNumber" ColumnName="AdminNumber" />
+                <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartMileage" ColumnName="StartMileage" />
+                <ScalarProperty Name="EndMileage" ColumnName="EndMileage" />
+                <ScalarProperty Name="InspectionDateCompleted" ColumnName="InspectionDateCompleted" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ConditionPass" ColumnName="ConditionPass" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

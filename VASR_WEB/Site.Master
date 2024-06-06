@@ -1,0 +1,198 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="VASR_WEB.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - VASR</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+
+        <div class="container-fluid" style="background-color: #53565a; margin-top: -50px;">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="text-left">
+
+                            <h3><a class="" style="color: white" runat="server" href="~/">Vehicle Assets System Of Records</a></h3>
+                            <p style="color: white; letter-spacing: 7px; margin-top: -10px;"><small><b>S</b>ERVICE <b>S</b>UPPORT <b>D</b>EPARTMENT</small></p>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <img src="~/img/vasr-logo-right.png" width="288" height="80" />
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+
+        <div class="navbar navbar-default navbar-static-top " role="navigation" style="background: #007096;">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+                <div class="navbar-collapse collapse">
+
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+
+                            <ul class="nav navbar-nav">
+                                <li><a runat="server" href="Default.aspx">Home</a></li>
+                                <%--               <li><a runat="server" href="~/About">About</a></li>
+                                <li><a runat="server" href="~/Contact">Contact</a></li>--%>
+                            </ul>
+
+
+                            <ul class="nav navbar-nav navbar-right">
+
+                                <li><a runat="server" href="Account/Login">Log in</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <% if (HttpContext.Current.User.IsInRole("Managers"))
+                                { %>
+
+                            <ul class="nav navbar-nav">
+                                <li><a runat="server" href="Default.aspx">Home</a></li>
+                               <li><a runat="server" href="~/Vehicles">Vehicles</a></li>
+                                <li><a runat="server" href="~/Operators">Operators</a></li>
+                                <li><a runat="server" href="~/DailyDispatch">Dispatch Records</a></li>
+               
+                                <li><a runat="server" href="~/SuperAdminDashboard">Manage Accounts</a></li>
+                                <li><a runat="server" href="~/Account/Register">Register New Accounts</a></li>
+                                <%--<li><a runat="server" href="~/Inspections">Inspections</a></li>--%>
+                                <%--<li><a runat="server" href="~/Accidentlogs">Accident Logs</a></li>--%>
+			            <li><a runat="server" href="http://virmakbotstfe01/">Print Tags</a></li>
+                            </ul>
+
+                            <%} %>
+
+                            <% if (HttpContext.Current.User.IsInRole("IMD Admin"))
+                                { %>
+
+                            <ul class="nav navbar-nav">
+                                                <li><a runat="server" href="~/">Home</a></li>
+                                <li><a runat="server" href="~/Vehicles">Vehicles</a></li>
+                         
+                                <li><a runat="server" href="~/DailyDispatch">Dispatch Records</a></li>
+                              
+                                <%--<li><a runat="server" href="~/Inspections">Inspections</a></li>--%>
+				    <li><a runat="server" href="http://virmakbotstfe01/">Print Tags</a></li>
+                            </ul>
+
+                            <%} %>
+
+                            <% if (HttpContext.Current.User.IsInRole("Master Driver"))
+                                { %>
+
+                            <ul class="nav navbar-nav">
+                                <li><a runat="server" href="~/">Home</a></li>
+                              
+                                <li><a runat="server" href="~/Operators">Operators</a></li>
+
+                            </ul>
+
+                            <%} %>
+
+
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                <li>
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <%--//body-content--%>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+
+            <script>
+                var slideIndex = 1;
+                showSlides(slideIndex);
+
+                // Next/previous controls
+                function plusSlides(n) {
+                    showSlides(slideIndex += n);
+                }
+
+                // Thumbnail image controls
+                function currentSlide(n) {
+                    showSlides(slideIndex = n);
+                }
+
+                function showSlides(n) {
+                    var i;
+                    var slides = document.getElementsByClassName("mySlides");
+                    var dots = document.getElementsByClassName("dot");
+                    if (n > slides.length) { slideIndex = 1 }
+                    if (n < 1) { slideIndex = slides.length }
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                    slides[slideIndex - 1].style.display = "block";
+                    dots[slideIndex - 1].className += " active";
+                }
+
+            </script>
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - K-BOSSS VASR, A proud product of K-BOSSS: Information Management Directorate</p>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>

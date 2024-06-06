@@ -1,0 +1,177 @@
+﻿/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="select"] {
+    max-width: 280px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        margin-top: 20px;
+    }
+    .body-content {
+        padding: 0;
+    }
+}
+
+
+
+/*  imdvasr tab */
+div.imdvasr-tab-container {
+    z-index: 10;
+    background-color: #ffffff;
+    padding: 0 !important;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+    margin-left: 50px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    -moz-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    background-clip: padding-box;
+    opacity: 0.97;
+    filter: alpha(opacity=97);
+}
+
+div.imdvasr-tab-menu {
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+}
+
+    div.imdvasr-tab-menu div.list-group {
+        margin-bottom: 0;
+    }
+
+        div.imdvasr-tab-menu div.list-group > a {
+            margin-bottom: 0;
+        }
+
+            div.imdvasr-tab-menu div.list-group > a .glyphicon,
+            div.imdvasr-tab-menu div.list-group > a .fa {
+                color: #53565A;
+            }
+
+            div.imdvasr-tab-menu div.list-group > a:first-child {
+                border-top-right-radius: 0;
+                -moz-border-top-right-radius: 0;
+            }
+
+            div.imdvasr-tab-menu div.list-group > a:last-child {
+                border-bottom-right-radius: 0;
+                -moz-border-bottom-right-radius: 0;
+            }
+
+            div.imdvasr-tab-menu div.list-group > a.active,
+            div.imdvasr-tab-menu div.list-group > a.active .glyphicon,
+            div.imdvasr-tab-menu div.list-group > a.active .fa {
+                background-color: #53565A;
+                background-image: #53565A;
+                color: #ffffff;
+            }
+
+                div.imdvasr-tab-menu div.list-group > a.active:after {
+                    content: '';
+                    position: absolute;
+                    left: 100%;
+                    top: 50%;
+                    margin-top: -13px;
+                    border-left: 0;
+                    border-bottom: 13px solid transparent;
+                    border-top: 13px solid transparent;
+                    border-left: 10px solid #53565A;
+                }
+
+div.imdvasr-tab-content {
+    background-color: #FFFFFF;
+    /* border: 1px solid #eeeeee; */
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+div.imdvasr-tab div.imdvasr-tab-content:not(.active) {
+    display: none;
+}
+
+.vehicleProfile{
+    color: #8a1538;
+    
+}
+
+.rbl label {
+    margin-left: 15px;
+    margin-right: 1px;
+}
+
+
+
+* {
+    box-sizing: border-box
+}
+
+.Active{
+    color: forestgreen;
+}
+.Inactive {
+    color: red;
+}
+
+
+.modal-dialog {
+    position: absolute;
+    top: 50% !important;
+    transform: translate(0, -50%) !important;
+    -ms-transform: translate(0, -50%) !important;
+    -webkit-transform: translate(0, -50%) !important;
+    margin: auto 5%;
+    width: 90%;
+    height: 80%;
+}
+
+.modal-content {
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.modal-body {
+    position: absolute;
+ 
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
